@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a | 小破水站</title>
+  <title itemprop="name">死杠存在Dom型xss漏洞的片段js代码 | 小破水站</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -375,94 +375,146 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://blog-1305208649.cos.ap-beijing.myqcloud.com/d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      死杠存在Dom型xss漏洞的片段js代码</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="">
+          </a>
+        </span>
+        <span>
+          <a href=""></a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2018-12-20<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2021年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      03月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/03/27/%E6%AD%BB%E6%9D%A0%E5%AD%98%E5%9C%A8Dom%E5%9E%8Bxss%E6%BC%8F%E6%B4%9E%E7%9A%84%E7%89%87%E6%AE%B5js%E4%BB%A3%E7%A0%81/">
-                          <span style="color:#0bf;">
-                          27日22:44:02</span>
-                          
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2018年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      12月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2018/12/20/2020%203.27/">
-                          <span style="color:#0bf;">
-                          20日23:13:48</span>
-                          死杠存在Dom型xss漏洞的片段js代码
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p><img src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h.jpg" alt="d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> pos=<span class="built_in">document</span>.URL.indexOf(<span class="string">&quot;name=&quot;</span>)+<span class="number">5</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> username = <span class="built_in">unescape</span>(<span class="built_in">document</span>.URL.substring(pos,<span class="built_in">document</span>.URL.length));</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> r=<span class="string">&#x27;&lt;b&gt;&#x27;</span>+username+<span class="string">&#x27;&lt;/b&gt;&#x27;</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">document</span>.write(r);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>第一行和最后一行的<script>和</script>中间是JavaScript的代码</p>
+<p>  var是声明其变量，也就是相当于指明接下来的就是其变量，此次出现的有其变量pos,username,r；我们从变量pos开始看，Document 对象属性中有URL,而第二行当中有document.URL，也就是返回当前文档的 URL。而indexOf的意思是可返回某个指定的字符串值在字符串中首次出现的位置。下列由<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jsref/jsref_indexOf.asp%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4">https://www.w3school.com.cn/jsref/jsref_indexOf.asp复制粘贴</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stringObject.indexOf(searchvalue,fromindex)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/clipboard.png" alt="img"></p>
+<p>   而在其中我们可以判断searchvalue值是必须的，而其代码里面是name=,而且省略了fromindex，因为所以科学道理他是从字符串的首字符开始，也就是当前文档的 URL是字符串，从其URL的首字符开始，而其name=是正好是五个字符，也就是将返回’name=’后面的传参的参数位置，也就是以数字形式出现</p>
+<p>再从变量username</p>
+<p>unescape(string)函数可对通过 escape() 编码的字符串进行解码。</p>
+<p><img src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/clipboard.png" alt="img"></p>
+<p>escape（）编码是指url编码，unescape也就是将url编码进行解码，而substring() 意思是用于提取字符串中介于两个指定下标之间的字符。而其语法；substring() 方法用于提取字符串中介于两个指定下标之间的字符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stringObject.substring(start,stop)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/clipboard.png" alt="img"></p>
+<p>start位置上是变量pos,也就是其传参参数的初始位置；而其document.URL.length是指当前文档的 url的整体长度，也就是将其截取其传参，然后进行url解码；而下面的变量r的值就是其<b>+传参的值+</b></p>
+<p>然后特别注意的是其document.write也就是引发的罪魁祸首，他是在文档中输出 ，不管是页面，还是网页前端代码都会输出其传参</p>
+<p><img src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/clipboard.png" alt="img"></p>
+<p><img src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/clipboard.png" alt="img"></p>
+<p>让其标签风格弹窗——</p>
+<p><img src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/clipboard.png" alt="img"></p>
+<p>如果一旦发现documen.write属性一般即有可能存在其dom型xss</p>
+<p>后期将会连续更新——</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre full previous">
+          
+            <a href="/2021/03/27/%E6%AD%BB%E6%9D%A0%E5%AD%98%E5%9C%A8Dom%E5%9E%8Bxss%E6%BC%8F%E6%B4%9E%E7%9A%84%E7%89%87%E6%AE%B5js%E4%BB%A3%E7%A0%81/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                </h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">
