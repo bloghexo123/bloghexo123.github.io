@@ -412,13 +412,29 @@
         
         <div class="entry-content">
           <p><img src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h.jpg" alt="d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var pos&#x3D;document.URL.indexOf(&quot;name&#x3D;&quot;)+5;</span><br><span class="line">var username &#x3D; unescape(document.URL.substring(pos,document.URL.length));</span><br><span class="line">var r&#x3D;&#39;&lt;b&gt;&#39;+username+&#39;&lt;&#x2F;b&gt;&#39;</span><br><span class="line">document.write(r);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+<span class="token keyword">var</span> pos<span class="token operator">=</span>document<span class="token punctuation">.</span>URL<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"name="</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> username <span class="token operator">=</span> <span class="token function">unescape</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>URL<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>pos<span class="token punctuation">,</span>document<span class="token punctuation">.</span>URL<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> r<span class="token operator">=</span><span class="token string">'&lt;b>'</span><span class="token operator">+</span>username<span class="token operator">+</span><span class="token string">'&lt;/b>'</span>
+document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+```html
 
-<p>第一行和最后一行的<script>和</script>中间是JavaScript的代码</p>
-<p>  var是声明其变量，也就是相当于指明接下来的就是其变量，此次出现的有其变量pos,username,r；我们从变量pos开始看，Document 对象属性中有URL,而第二行当中有document.URL，也就是返回当前文档的 URL。而indexOf的意思是可返回某个指定的字符串值在字符串中首次出现的位置。下列由<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jsref/jsref_indexOf.asp%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4">https://www.w3school.com.cn/jsref/jsref_indexOf.asp复制粘贴</a></p>
-<p>``html<br>stringObject.indexOf(searchvalue,fromindex)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![img](https:&#x2F;&#x2F;blog-1305208649.cos.ap-beijing.myqcloud.com&#x2F;clipboard.png)</span><br><span class="line"></span><br><span class="line">   而在其中我们可以判断searchvalue值是必须的，而其代码里面是name&#x3D;,而且省略了fromindex，因为所以科学道理他是从字符串的首字符开始，也就是当前文档的 URL是字符串，从其URL的首字符开始，而其name&#x3D;是正好是五个字符，也就是将返回&#39;name&#x3D;&#39;后面的传参的参数位置，也就是以数字形式出现</span><br><span class="line"></span><br><span class="line">再从变量username</span><br><span class="line"></span><br><span class="line">unescape(string)函数可对通过 escape() 编码的字符串进行解码。</span><br><span class="line"></span><br><span class="line">![img](https:&#x2F;&#x2F;blog-1305208649.cos.ap-beijing.myqcloud.com&#x2F;clipboard.png)</span><br><span class="line"></span><br><span class="line">escape（）编码是指url编码，unescape也就是将url编码进行解码，而substring() 意思是用于提取字符串中介于两个指定下标之间的字符。而其语法；substring() 方法用于提取字符串中介于两个指定下标之间的字符。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;javacript</span><br><span class="line">stringObject.substring(start,stop)</span><br></pre></td></tr></table></figure>
+第一行和最后一行的<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">和</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>中间是JavaScript的代码
 
+  var是声明其变量，也就是相当于指明接下来的就是其变量，此次出现的有其变量pos,username,r；我们从变量pos开始看，Document 对象属性中有URL,而第二行当中有document.URL，也就是返回当前文档的 URL。而indexOf的意思是可返回某个指定的字符串值在字符串中首次出现的位置。下列由https://www.w3school.com.cn/jsref/jsref_indexOf.asp复制粘贴
+
+```html
+stringObject.indexOf(searchvalue,fromindex)
+</code></pre>
+<p><img src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/clipboard.png" alt="img"></p>
+<p>   而在其中我们可以判断searchvalue值是必须的，而其代码里面是name=,而且省略了fromindex，因为所以科学道理他是从字符串的首字符开始，也就是当前文档的 URL是字符串，从其URL的首字符开始，而其name=是正好是五个字符，也就是将返回’name=’后面的传参的参数位置，也就是以数字形式出现</p>
+<p>再从变量username</p>
+<p>unescape(string)函数可对通过 escape() 编码的字符串进行解码。</p>
+<p><img src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/clipboard.png" alt="img"></p>
+<p>escape（）编码是指url编码，unescape也就是将url编码进行解码，而substring() 意思是用于提取字符串中介于两个指定下标之间的字符。而其语法；substring() 方法用于提取字符串中介于两个指定下标之间的字符。</p>
+<pre class=" language-html"><code class="language-html">stringObject.substring(start,stop)
+</code></pre>
 <p><img src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/clipboard.png" alt="img"></p>
 <p>start位置上是变量pos,也就是其传参参数的初始位置；而其document.URL.length是指当前文档的 url的整体长度，也就是将其截取其传参，然后进行url解码；而下面的变量r的值就是其<b>+传参的值+</b></p>
 <p>然后特别注意的是其document.write也就是引发的罪魁祸首，他是在文档中输出 ，不管是页面，还是网页前端代码都会输出其传参</p>
