@@ -411,27 +411,15 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p><img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/e6d1615cb5395cf4ba096e6359e618c815c6184e.jpg"><br>-–</p>
-<p>title: 网络配置与运维笔记</p>
-<p>date: 2018-12-20 23:13:48</p>
-<p>keywords: 留言板</p>
-<p>description: </p>
-<p>comments: true</p>
-<p># 在这里配置单页面头部图片，自定义替换哦~</p>
-<p>photos: </p>
-<p>-–</p>
+          <p><img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/e6d1615cb5395cf4ba096e6359e618c815c6184e.jpg"></p>
 <p>用户视图（查看运行状态或其他参数）——&gt;系统视图（配置设备的系统参数）——&gt;接口视图 配置接口参数（协议视图 配置路由协议）</p>
 <pre class=" language-plain"><code class="language-plain">系统视图转换为接口视图 [Huawei]interface GigabitEthernet 0/0/0`
 
 更改路由器名称：<Huawei>system-view
 
 ​               [Huawei]sysname R1
-```plain
-
-###### 配置路由器接口 ：
-
-```plain
-[Huawei]interface Vlanif 1 配置Vlanif接口，默认1`
+</code></pre>
+<h6 id="配置路由器接口-："><a href="#配置路由器接口-：" class="headerlink" title="配置路由器接口 ："></a>配置路由器接口 ：</h6><pre class=" language-plain"><code class="language-plain">[Huawei]interface Vlanif 1 配置Vlanif接口，默认1`
 
 `[Huawei-Vlanif1]ip address 192.168.80.1 24 添加IP地址`
 
@@ -444,24 +432,16 @@
 `[Huawei-Vlanif1]shutdown 关闭端口`
 
 `[Huawei-Vlanif1]undo shutdown 启用接口`
-```plain
-
-###### 配置Console口登录认证方式：
-
-```plain
-[Huawei]user-interface console ?
+</code></pre>
+<h6 id="配置Console口登录认证方式："><a href="#配置Console口登录认证方式：" class="headerlink" title="配置Console口登录认证方式："></a>配置Console口登录认证方式：</h6><pre class=" language-plain"><code class="language-plain">[Huawei]user-interface console ?
 
 [Huawei]user-interface console 0
 
 [Huawei-ui-console0]authentication-mode password
 
 [Huawei-ui-console0]set authentication password cipher 123456 设置密码123456
-```plain
-
-###### `配置路由器允许telnet远程管理：`
-
-```plain
-[Huawei]telnet server enable 
+</code></pre>
+<h6 id="配置路由器允许telnet远程管理："><a href="#配置路由器允许telnet远程管理：" class="headerlink" title="配置路由器允许telnet远程管理："></a><code>配置路由器允许telnet远程管理：</code></h6><pre class=" language-plain"><code class="language-plain">[Huawei]telnet server enable 
 
 [Huawei]user-interface vty 0 ?
 
@@ -472,12 +452,8 @@
 [Huawei]user-interface vty 0 4
 
 [Huawei-ui-vty0-4]authentication-mode password
-```plain
-
-###### 连接到路由器的用户分级 0-15级
-
-```plain
-0级别用户 执行0级别命令
+</code></pre>
+<h6 id="连接到路由器的用户分级-0-15级"><a href="#连接到路由器的用户分级-0-15级" class="headerlink" title="连接到路由器的用户分级 0-15级"></a>连接到路由器的用户分级 0-15级</h6><pre class=" language-plain"><code class="language-plain">0级别用户 执行0级别命令
 
 1级别用户 执行0,1级别命令
 
@@ -488,18 +464,12 @@
 通过console口 用户级别是3级
 
 通过telnet接口 用户级别是0级
-```plain
-
-```plain
-设置telent用户级别为2 [Huawei-ui--vty0-4]user privilege level 2
+</code></pre>
+<pre class=" language-plain"><code class="language-plain">设置telent用户级别为2 [Huawei-ui--vty0-4]user privilege level 2
 
 恢复Telnet默认用户级别[Huawei-ui-vty0-4]undo privilege level
-```plain
-
-###### 创建用户的命令：
-
-```plain
-[Huawei]aaa`
+</code></pre>
+<h6 id="创建用户的命令："><a href="#创建用户的命令：" class="headerlink" title="创建用户的命令："></a>创建用户的命令：</h6><pre class=" language-plain"><code class="language-plain">[Huawei]aaa`
 
 `[Huawei-aaa]?`
 
@@ -510,26 +480,12 @@
 `[Huawei-aaa]local-user admin service-type telnet`
 
 `[Huawei-aaa]local-user han password cipher 123456 privilege level 1 创建一个用户级别是1的用户`
-
-```plain
-
-注意：配置完以后，必须保存，按q回退到<Huawei>用户视图，然后输入save保存
-
-
-
-### 基础概念：
-
-1.通用路由平台VRP（Versatile Routing Platform),VRP是华为公司具有完全自主知识产权的网络操作系统
-
-2.Console口登录:CONSOLE口是设备的控制台接入端口,用于用户通过终端 (或仿真终端)对设备进行初始配置和后续管理.
-
-![image-20210521080422996](https://i.loli.net/2021/05/21/JdNoYwnX9GW6f4R.png)
-
-
-### 基本操作命令：
-
-```plain
-system-view：用户视图——>系统视图
+</code></pre>
+<p>注意：配置完以后，必须保存，按q回退到<Huawei>用户视图，然后输入save保存</p>
+<h3 id="基础概念："><a href="#基础概念：" class="headerlink" title="基础概念："></a>基础概念：</h3><p>1.通用路由平台VRP（Versatile Routing Platform),VRP是华为公司具有完全自主知识产权的网络操作系统</p>
+<p>2.Console口登录:CONSOLE口是设备的控制台接入端口,用于用户通过终端 (或仿真终端)对设备进行初始配置和后续管理.</p>
+<p><img src="https://i.loli.net/2021/05/21/JdNoYwnX9GW6f4R.png" alt="image-20210521080422996"></p>
+<h3 id="基本操作命令："><a href="#基本操作命令：" class="headerlink" title="基本操作命令："></a>基本操作命令：</h3><pre class=" language-plain"><code class="language-plain">system-view：用户视图——>系统视图
 interface GigabitEthernet 0/0/0  用户视图——>接口视图
 display version：显示vrp版本
 sysname R1 :更改路由器名称
@@ -562,46 +518,30 @@ undo shutdown：启动接口
 <td align="left">同TAB一样</td>
 </tr>
 </tbody></table>
-<h3 id="配置Console口登录认证方式："><a href="#配置Console口登录认证方式：" class="headerlink" title="配置Console口登录认证方式："></a>配置Console口登录认证方式：</h3><pre class=" language-plain"><code class="language-plain">[R1]user-interface console ?
+<h3 id="配置Console口登录认证方式：-1"><a href="#配置Console口登录认证方式：-1" class="headerlink" title="配置Console口登录认证方式："></a>配置Console口登录认证方式：</h3><pre class=" language-plain"><code class="language-plain">[R1]user-interface console ?
 [R1]user-interface console 0 
 [R1-ui-console0]authentication-mode password  
 [R1-ui-console0]set authentication password cipher 91xueit ◼重设密码 
 [R1-ui-console0]idle-timeout 20 ◼设置登录超时的时间 
 [R1-ui-console0]display this
-```plain
-
-### 配置路由器允许telnet远程管理：
-
-```plain
-[R1]user-interface vty 0 ?
+</code></pre>
+<h3 id="配置路由器允许telnet远程管理：-1"><a href="#配置路由器允许telnet远程管理：-1" class="headerlink" title="配置路由器允许telnet远程管理："></a>配置路由器允许telnet远程管理：</h3><pre class=" language-plain"><code class="language-plain">[R1]user-interface vty 0 ?
  [R1]user-interface vty 0 4 
 [R1-ui-vty0-4]authentication-mode password  
 [R1-ui-vty0-4]idle-timeout 10
-```plain
-
-### 查看连接过来的用户 :
-
-```plain
-[R1]display users◼查看连接过来的用户 
+</code></pre>
+<h3 id="查看连接过来的用户"><a href="#查看连接过来的用户" class="headerlink" title="查看连接过来的用户 :"></a>查看连接过来的用户 :</h3><pre class=" language-plain"><code class="language-plain">[R1]display users◼查看连接过来的用户 
 [R1]display user-interface◼查看全部用户接口
-```plain
-
-### 连接到路由器的用户分级 :
-
-```plain
-◼0-15级 
+</code></pre>
+<h3 id="连接到路由器的用户分级"><a href="#连接到路由器的用户分级" class="headerlink" title="连接到路由器的用户分级 :"></a>连接到路由器的用户分级 :</h3><pre class=" language-plain"><code class="language-plain">◼0-15级 
 ◼0级别用户 执行0级别命令 
 ◼1级别用户 执行0、1级别命令
 ◼2级别用户 执行0、1、2级别命令 
 ◼3-15级别用户 执行0、1、2、3级别的命令 
 ◼通过console口 用户级别是3级 
 ◼通过telnet接口 用户级别是0级
-```plain
-
-### 创建用户的命令：
-
-```plain
- [R11]aaa 
+</code></pre>
+<h3 id="创建用户的命令：-1"><a href="#创建用户的命令：-1" class="headerlink" title="创建用户的命令："></a>创建用户的命令：</h3><pre class=" language-plain"><code class="language-plain"> [R11]aaa 
 [R11-aaa]? 
 [R11-aaa]local-user admin password cipher 91xueit.com 
 [R11-aaa]local-user admin privilege level 3 
@@ -609,42 +549,22 @@ undo shutdown：启动接口
 [R11-aaa]local-user han password cipher 51cto.com privilege level 1（创建一个用户级别是1的用户 ）
 [R11-aaa]local-user han service-type telnet 
 [R11-aaa]local-user admin1 password cipher 91xueit@com privilege level 3（创建一个用户允许console连接 ）
-```plain
-
-![image-20210521075432621](https://i.loli.net/2021/05/21/i5t9ZcwvKBQYSIq.png)
-
-### 共享型以太网：
-
-```plain
-采用了总线型拓扑
+</code></pre>
+<p><img src="https://i.loli.net/2021/05/21/i5t9ZcwvKBQYSIq.png" alt="image-20210521075432621"></p>
+<h3 id="共享型以太网："><a href="#共享型以太网：" class="headerlink" title="共享型以太网："></a>共享型以太网：</h3><pre class=" language-plain"><code class="language-plain">采用了总线型拓扑
 共享通信链路的带宽
 数据信号就会在信道内碰撞产生冲突
-```plain
-
-![image-20210521080450143](https://i.loli.net/2021/05/21/14JDTObRl8aUxHQ.png)
-
-### 
-
-### lCSMA/CD协议的工作过程：
-
-```plain
-①侦听信道上是否有信号在传输。如果有的话，表明信道处于忙状态，就继续侦听，直到信道空闲为止；
+</code></pre>
+<p><img src="https://i.loli.net/2021/05/21/14JDTObRl8aUxHQ.png" alt="image-20210521080450143"></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="lCSMA-CD协议的工作过程："><a href="#lCSMA-CD协议的工作过程：" class="headerlink" title="lCSMA/CD协议的工作过程："></a>lCSMA/CD协议的工作过程：</h3><pre class=" language-plain"><code class="language-plain">①侦听信道上是否有信号在传输。如果有的话，表明信道处于忙状态，就继续侦听，直到信道空闲为止；
 ②若没有侦听到任何信号，就传输数据；
 ③传输时继续侦听，如发现冲突则执行退避算法，随机等待一段时间后，重新执行步骤①；
 ④若未发现冲突则发送成功，计算机会返回到侦听信道状态。
-```plain
-
-### 冲突与冲突域：
-
-```plain
-冲突（Collision）：在以太网中，当两个数据帧同时被发到物理传输介质上，并完全或部分重叠时，就发生了数据冲突。当冲突发生时，将导致数据损坏。
+</code></pre>
+<h3 id="冲突与冲突域："><a href="#冲突与冲突域：" class="headerlink" title="冲突与冲突域："></a>冲突与冲突域：</h3><pre class=" language-plain"><code class="language-plain">冲突（Collision）：在以太网中，当两个数据帧同时被发到物理传输介质上，并完全或部分重叠时，就发生了数据冲突。当冲突发生时，将导致数据损坏。
 冲突域：连接到同一个共享介质的设备共同组成了一个冲突域。
-```plain
-
-### **交换机简介:**
-
-```plain
-交换机工作在数据链路层
+</code></pre>
+<h3 id="交换机简介"><a href="#交换机简介" class="headerlink" title="交换机简介:"></a><strong>交换机简介:</strong></h3><pre class=" language-plain"><code class="language-plain">交换机工作在数据链路层
 交换机的每一个端口都是一个独立的冲突域
 交换机以端口隔离冲突域形成交换型以太网l广播域
 广播：一台设备向同一个网络中的所有其他设备发送消息的数据发送方式；
@@ -662,118 +582,52 @@ Port Mode: COMMON COPPER
 Speed : 1000,  （速率为1000Mbit/s） Loopback: NONE
 Duplex: FULL, (双全工模式，Half则是半双工模式)  Negotiation: ENABLE
 ---省略部分显示内容 ---
-```plain
-
-### **交换机的基本设置:**
-
-```plain
-[Huawei]interface GigabitEthernet 0/0/1
+</code></pre>
+<h3 id="交换机的基本设置"><a href="#交换机的基本设置" class="headerlink" title="交换机的基本设置:"></a><strong>交换机的基本设置:</strong></h3><pre class=" language-plain"><code class="language-plain">[Huawei]interface GigabitEthernet 0/0/1
 [Huawei-GigabitEthernet0/0/1]undo negotiation auto (关闭自动协商模式)
 [Huawei-GigabitEthernet0/0/1]speed 100（设置速率为100Mit/s）
 [Huawei-GigabitEthernet0/0/1]duplex half(设置端口为半双工模式)
-```plain
-
-### 补充知识：
-
-```plain
-MAC地址泛洪攻击
+</code></pre>
+<h3 id="补充知识："><a href="#补充知识：" class="headerlink" title="补充知识："></a>补充知识：</h3><pre class=" language-plain"><code class="language-plain">MAC地址泛洪攻击
 p定义：攻击者利用交换机的学习机制不断发送大量的MAC地址，整个MAC表到达存储上限时，交换机只能广播后续数据帧（泛洪），导致攻击者捕获数据帧；
 p攻击者伪造不同MAC地址的数据帧的。
-```plain
-
-### 什么是VLAN：
-
-```plain
-定义： (Virtual Local Area Network，VLAN)也称为虚拟局域网。
+</code></pre>
+<h3 id="什么是VLAN："><a href="#什么是VLAN：" class="headerlink" title="什么是VLAN："></a>什么是VLAN：</h3><pre class=" language-plain"><code class="language-plain">定义： (Virtual Local Area Network，VLAN)也称为虚拟局域网。
 功能：隔离广播域，限制广播域的范围，减少广播流量。
-```plain
-
-### 划分VLAN的方法:
-
-```plain
-基于端口划分
+</code></pre>
+<h3 id="划分VLAN的方法"><a href="#划分VLAN的方法" class="headerlink" title="划分VLAN的方法:"></a>划分VLAN的方法:</h3><pre class=" language-plain"><code class="language-plain">基于端口划分
 基于MAC地址划分
 基于IP子网划分
 基于协议划分
 基于策略划分
-```plain
-
-### 交换机端口的分类:
-
-```plain
-Access（接入）端口Access端口用于连接计算机等终端设备，只能属于一个VLAN，也就是只能传输一个VLAN的数据。Trunk（干道）端口Trunk端口用于连接交换机等网络设备，它允许传输多个VLAN的数据。Hybrid（混合）端口Hybrid接口是华为系列交换机端口的默认工作模式，它能够接收和发送多个VLAN的数据帧，可以用于链接交换机之间的链路，也可以用于连接终端设备.vlan的添加:[Huawei]vlan 10[Huawei]vlan batch 20 30
-```plain
-
-### 配置Access端口和Trunk端口:
-
-为修改交换机的Ethernet 0/0/1端口为access模式，并配置端口的PVID为VLAN10，同时修改交换机的Ethernet 0/0/2端口为trunk模式，配置允许VLAN10、VLAN20通过。
-
-```plain
-[Huawei]interface Ethernet 0/0/1[Huawei-Ethernet0/0/1]port link-type access[Huawei-Ethernet0/0/1]port default vlan 10[Huawei-Ethernet0/0/1]quit[Huawei]interface Ethernet 0/0/2[Huawei-Ethernet0/0/2]port link-type trunk[Huawei-Ethernet0/0/2]port trunk allow-pass vlan 10 20
-```plain
-
-创建VLAN后，可以执行【display vlan】命令验证配置结果。如果不指定任何参数，则该命令将显示所有VLAN的简要信息；
-执行【display vlan [ vlan-id [ verbose ] ]】命令，可以查看指定VLAN的详细信息，包括VLAN ID、类型、描述、VLAN的状态、VLAN中的端口、以及VLAN中端口的模式等；
-
-### STP生成树协议：
-
-简单通俗的来讲就是避免环路
-
-### 生成树的生成过程：
-
-①选举根桥（Root Bridge），作为整个网络的根。
-
-②确定根端口（Root port，RP），确定非根交换机与根交换机链接最优的端口。
-
-③确定指定端口（Designated Port，DP），确定每条链路与根桥连接最优的端口。
-
-④阻塞备用端口（Alternate Port，AP），形成一个无环网络。
-
-### ①选举根桥：
-
-```plain
-a)交换机S1、S2、S3都使用了默认的桥优先级32768；b)显然，S1的BID最小，所以最终S1将被选举为根桥。
+</code></pre>
+<h3 id="交换机端口的分类"><a href="#交换机端口的分类" class="headerlink" title="交换机端口的分类:"></a>交换机端口的分类:</h3><pre class=" language-plain"><code class="language-plain">Access（接入）端口Access端口用于连接计算机等终端设备，只能属于一个VLAN，也就是只能传输一个VLAN的数据。Trunk（干道）端口Trunk端口用于连接交换机等网络设备，它允许传输多个VLAN的数据。Hybrid（混合）端口Hybrid接口是华为系列交换机端口的默认工作模式，它能够接收和发送多个VLAN的数据帧，可以用于链接交换机之间的链路，也可以用于连接终端设备.vlan的添加:[Huawei]vlan 10[Huawei]vlan batch 20 30
+</code></pre>
+<h3 id="配置Access端口和Trunk端口"><a href="#配置Access端口和Trunk端口" class="headerlink" title="配置Access端口和Trunk端口:"></a>配置Access端口和Trunk端口:</h3><p>为修改交换机的Ethernet 0/0/1端口为access模式，并配置端口的PVID为VLAN10，同时修改交换机的Ethernet 0/0/2端口为trunk模式，配置允许VLAN10、VLAN20通过。</p>
+<pre class=" language-plain"><code class="language-plain">[Huawei]interface Ethernet 0/0/1[Huawei-Ethernet0/0/1]port link-type access[Huawei-Ethernet0/0/1]port default vlan 10[Huawei-Ethernet0/0/1]quit[Huawei]interface Ethernet 0/0/2[Huawei-Ethernet0/0/2]port link-type trunk[Huawei-Ethernet0/0/2]port trunk allow-pass vlan 10 20
+</code></pre>
+<p>创建VLAN后，可以执行【display vlan】命令验证配置结果。如果不指定任何参数，则该命令将显示所有VLAN的简要信息；<br>执行【display vlan [ vlan-id [ verbose ] ]】命令，可以查看指定VLAN的详细信息，包括VLAN ID、类型、描述、VLAN的状态、VLAN中的端口、以及VLAN中端口的模式等；</p>
+<h3 id="STP生成树协议："><a href="#STP生成树协议：" class="headerlink" title="STP生成树协议："></a>STP生成树协议：</h3><p>简单通俗的来讲就是避免环路</p>
+<h3 id="生成树的生成过程："><a href="#生成树的生成过程：" class="headerlink" title="生成树的生成过程："></a>生成树的生成过程：</h3><p>①选举根桥（Root Bridge），作为整个网络的根。</p>
+<p>②确定根端口（Root port，RP），确定非根交换机与根交换机链接最优的端口。</p>
+<p>③确定指定端口（Designated Port，DP），确定每条链路与根桥连接最优的端口。</p>
+<p>④阻塞备用端口（Alternate Port，AP），形成一个无环网络。</p>
+<h3 id="①选举根桥："><a href="#①选举根桥：" class="headerlink" title="①选举根桥："></a>①选举根桥：</h3><pre class=" language-plain"><code class="language-plain">a)交换机S1、S2、S3都使用了默认的桥优先级32768；b)显然，S1的BID最小，所以最终S1将被选举为根桥。
 </code></pre>
 <p><img src="https://i.loli.net/2021/05/21/IxHgJVtQeANzaZp.png" alt="image-20210521080510308"></p>
 <h3 id="②确定根端口："><a href="#②确定根端口：" class="headerlink" title="②确定根端口："></a>②确定根端口：</h3><pre class=" language-plain"><code class="language-plain">a)比较根路径开销，较小的为根端口；b)比较上行设备的BID，BID较小的端口为根端口；c)比较发送方端口ID，较小的端口为根端口。
-```plain
-
-### ③确定指定端口：
-
-```plain
-指定端口也是通过比较RPC来确定的，RPC较小的端口将成为指定端口。如果RPC相同，则需要比较BID、PID等。
-```plain
-
-### ④阻塞备用端口
-
-```plain
-a)确定根端口和指定端口后，所有剩余端口称为备用端口。STP会对备用端口进行逻辑阻塞。b)备用端口被逻辑阻塞后，STP树的生成过程便告完成。
-```plain
-
-### 配置交换机S1上生成树工作模式为STP：
-
-```plain
-<Huawei>system-view[Huawei]sysname S1[S1]stp mode stp
-```plain
-
-### 配置S1为根桥：
-
-```plain
-[S1]stp root primary
-```plain
-
-### 配置S2为备份根桥：
-
-```plain
-[S2]stp root secondary
-```plain
-
-### 在S1上使用【display stp brief】命令，查看STP的简要信息
-
-### 查看到路由器R1的路由表
-
-```plain
-在路由器R1上执行【display ip routing-table】命令便可查看到路由器R1的路由表，在这个路由表中，每一行就是一条路由信息（一个路由项或一个路由条目）。通常情况下，一条路由信息由3个要素组成：目标网络/掩码（Destination/Mask）、出接口（Interface）和下一跳IP地址（NextHop）
+</code></pre>
+<h3 id="③确定指定端口："><a href="#③确定指定端口：" class="headerlink" title="③确定指定端口："></a>③确定指定端口：</h3><pre class=" language-plain"><code class="language-plain">指定端口也是通过比较RPC来确定的，RPC较小的端口将成为指定端口。如果RPC相同，则需要比较BID、PID等。
+</code></pre>
+<h3 id="④阻塞备用端口"><a href="#④阻塞备用端口" class="headerlink" title="④阻塞备用端口"></a>④阻塞备用端口</h3><pre class=" language-plain"><code class="language-plain">a)确定根端口和指定端口后，所有剩余端口称为备用端口。STP会对备用端口进行逻辑阻塞。b)备用端口被逻辑阻塞后，STP树的生成过程便告完成。
+</code></pre>
+<h3 id="配置交换机S1上生成树工作模式为STP："><a href="#配置交换机S1上生成树工作模式为STP：" class="headerlink" title="配置交换机S1上生成树工作模式为STP："></a>配置交换机S1上生成树工作模式为STP：</h3><pre class=" language-plain"><code class="language-plain"><Huawei>system-view[Huawei]sysname S1[S1]stp mode stp
+</code></pre>
+<h3 id="配置S1为根桥："><a href="#配置S1为根桥：" class="headerlink" title="配置S1为根桥："></a>配置S1为根桥：</h3><pre class=" language-plain"><code class="language-plain">[S1]stp root primary
+</code></pre>
+<h3 id="配置S2为备份根桥："><a href="#配置S2为备份根桥：" class="headerlink" title="配置S2为备份根桥："></a>配置S2为备份根桥：</h3><pre class=" language-plain"><code class="language-plain">[S2]stp root secondary
+</code></pre>
+<h3 id="在S1上使用【display-stp-brief】命令，查看STP的简要信息"><a href="#在S1上使用【display-stp-brief】命令，查看STP的简要信息" class="headerlink" title="在S1上使用【display stp brief】命令，查看STP的简要信息"></a>在S1上使用【display stp brief】命令，查看STP的简要信息</h3><h3 id="查看到路由器R1的路由表"><a href="#查看到路由器R1的路由表" class="headerlink" title="查看到路由器R1的路由表"></a>查看到路由器R1的路由表</h3><pre class=" language-plain"><code class="language-plain">在路由器R1上执行【display ip routing-table】命令便可查看到路由器R1的路由表，在这个路由表中，每一行就是一条路由信息（一个路由项或一个路由条目）。通常情况下，一条路由信息由3个要素组成：目标网络/掩码（Destination/Mask）、出接口（Interface）和下一跳IP地址（NextHop）
 [R1]display ip routing-table
 Route Flags: R - relay, D - download to fib
 ------------------------------------------------------------------------------
@@ -799,12 +653,9 @@ Destination/Mask  Proto   Pre  Cost    Flags  NextHop    Interface
 <Huawei>system-view
 [Huawei]sysname R2
 [R2]ip route-static 2.2.2.0 24 1.1.1.1
-```plain
-
-在路由器R1系统视图状态下输入【display ip routing-table】命令查看其路由表：
-
-```plain
-[R1]display ip routing-table
+</code></pre>
+<p>在路由器R1系统视图状态下输入【display ip routing-table】命令查看其路由表：</p>
+<pre class=" language-plain"><code class="language-plain">[R1]display ip routing-table
 Route Flags: R - relay, D - download to fib
 ------------------------------------------------------------------------------
 Destination/Mask  Proto   Pre  Cost    Flags  NextHop    Interface
@@ -813,41 +664,20 @@ Destination/Mask  Proto   Pre  Cost    Flags  NextHop    Interface
 3.3.3.0/24        Static  60   0       D      1.1.1.2    GigabitEthernet1/0/2
 1.1.1.0/24        Direct  0    0       D      127.0.0.1  GigabitEthernet1/0/2
 1.1.1.1/32        Direct  0    0       D      127.0.0.1  InLoopBack0
-```plain
-
-### 默认路由概述：
-
-我们把目的地/掩码为0.0.0.0/0的路由称为默认路由（Default Route）。
-
-如果网络设备的路由表中存在默认路由，那么当一个待发送或待转发的IP报文不能匹配IP路由表中的任何非默认路由时，就会根据默认路由来进行发送或转发；
-
-如果网络设备的IP路由表中不存在默认路由，那么当一个待发送或待转发的IP报文不能匹配IP路由表中的任何路由时，该IP报文就会被直接丢弃。
-
-### 动态路由配置：
-
-```plain
-<Huawei>system-view
+</code></pre>
+<h3 id="默认路由概述："><a href="#默认路由概述：" class="headerlink" title="默认路由概述："></a>默认路由概述：</h3><p>我们把目的地/掩码为0.0.0.0/0的路由称为默认路由（Default Route）。</p>
+<p>如果网络设备的路由表中存在默认路由，那么当一个待发送或待转发的IP报文不能匹配IP路由表中的任何非默认路由时，就会根据默认路由来进行发送或转发；</p>
+<p>如果网络设备的IP路由表中不存在默认路由，那么当一个待发送或待转发的IP报文不能匹配IP路由表中的任何路由时，该IP报文就会被直接丢弃。</p>
+<h3 id="动态路由配置："><a href="#动态路由配置：" class="headerlink" title="动态路由配置："></a>动态路由配置：</h3><pre class=" language-plain"><code class="language-plain"><Huawei>system-view
 [Huawei]sysname R1
 [R1]ip route-static 3.3.3.0 24 1.1.1.2
 [R1]ip route-static 0.0.0.0  0 4.4.4.2
-```plain
-
-### 浮动静态路由的概念
-
-浮动静态路由（Floating Static Route）是一种特殊的静态路由，通过配置去往相同的目标网络，但优先级不同的静态路由，以保证在网络中优先级较高的路由工作。而一旦主路由失效，备份路由会接替主路由，增强网络的可靠性。
-
-### 负载均衡的概念
-
-当有多条可选路径前往同一目标网络，可以通过配置相同优先级和开销的静态路由实现负载均衡，使得数据的传输均衡地分配到多条路径上，从而实现数据分流、减轻单条路径负载过重的效果。而当其中某一条路径失效时，其他路径仍然能够正常传输数据，也起到了冗余作用。仅负载均衡条件下，路由器才会同时显示两条去往同一目标网络的路由条目。
-
-### **VLAN间路由概念**
-
-VLAN间路由的3种方法：多臂路由、单臂路由和三层交换
-
-![image-20210521075822167](https://i.loli.net/2021/05/21/xnqiJNEWdj4gPYT.png)
-
-```plain
-<Huawei>system-view
+</code></pre>
+<h3 id="浮动静态路由的概念"><a href="#浮动静态路由的概念" class="headerlink" title="浮动静态路由的概念"></a>浮动静态路由的概念</h3><p>浮动静态路由（Floating Static Route）是一种特殊的静态路由，通过配置去往相同的目标网络，但优先级不同的静态路由，以保证在网络中优先级较高的路由工作。而一旦主路由失效，备份路由会接替主路由，增强网络的可靠性。</p>
+<h3 id="负载均衡的概念"><a href="#负载均衡的概念" class="headerlink" title="负载均衡的概念"></a>负载均衡的概念</h3><p>当有多条可选路径前往同一目标网络，可以通过配置相同优先级和开销的静态路由实现负载均衡，使得数据的传输均衡地分配到多条路径上，从而实现数据分流、减轻单条路径负载过重的效果。而当其中某一条路径失效时，其他路径仍然能够正常传输数据，也起到了冗余作用。仅负载均衡条件下，路由器才会同时显示两条去往同一目标网络的路由条目。</p>
+<h3 id="VLAN间路由概念"><a href="#VLAN间路由概念" class="headerlink" title="VLAN间路由概念"></a><strong>VLAN间路由概念</strong></h3><p>VLAN间路由的3种方法：多臂路由、单臂路由和三层交换</p>
+<p><img src="https://i.loli.net/2021/05/21/xnqiJNEWdj4gPYT.png" alt="image-20210521075822167"></p>
+<pre class=" language-plain"><code class="language-plain"><Huawei>system-view
 [Huawei]sysname SW1
 [SW1]vlan batch 10 20
 [SW1-GigabitEthernet0/0/24]port link-type trunk
@@ -866,9 +696,6 @@ VLAN间路由的3种方法：多臂路由、单臂路由和三层交换
 [R1-GigabitEthernet0/0/1.20]dot1q termination vid 20
 [R1-GigabitEthernet0/0/1.20Jip address 192.168.20.254 24
 [R1-GigabitEthernet0/0/1.20]arp broadcast enable
-```plain
-
-
 </code></pre>
 
         </div>
