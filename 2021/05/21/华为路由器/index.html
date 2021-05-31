@@ -417,21 +417,21 @@
 
 更改路由器名称：<Huawei>system-view
 
-​               [Huawei]sysname R1
+​[Huawei]sysname R1
 </code></pre>
 <h6 id="配置路由器接口-："><a href="#配置路由器接口-：" class="headerlink" title="配置路由器接口 ："></a>配置路由器接口 ：</h6><pre class=" language-plain"><code class="language-plain">[Huawei]interface Vlanif 1 配置Vlanif接口，默认1`
 
-`[Huawei-Vlanif1]ip address 192.168.80.1 24 添加IP地址`
+[Huawei-Vlanif1]ip address 192.168.80.1 24 添加IP地址`
 
-`[Huawei-Vlanif1]dispaly this 查看接口配置`
+[Huawei-Vlanif1]dispaly this 查看接口配置`
 
-`[Huawei-Vlanif1]undo ip address删除接口所有地址`
+[Huawei-Vlanif1]undo ip address删除接口所有地址`
 
-`[Huawei-Vlanif1]undo ip address 192.168.8.252 24 也许还得加sub`
+[Huawei-Vlanif1]undo ip address 192.168.8.252 24 也许还得加sub`
 
-`[Huawei-Vlanif1]shutdown 关闭端口`
+[Huawei-Vlanif1]shutdown 关闭端口`
 
-`[Huawei-Vlanif1]undo shutdown 启用接口`
+[Huawei-Vlanif1]undo shutdown 启用接口`
 </code></pre>
 <h6 id="配置Console口登录认证方式："><a href="#配置Console口登录认证方式：" class="headerlink" title="配置Console口登录认证方式："></a>配置Console口登录认证方式：</h6><pre class=" language-plain"><code class="language-plain">[Huawei]user-interface console ?
 
@@ -471,15 +471,15 @@
 </code></pre>
 <h6 id="创建用户的命令："><a href="#创建用户的命令：" class="headerlink" title="创建用户的命令："></a>创建用户的命令：</h6><pre class=" language-plain"><code class="language-plain">[Huawei]aaa`
 
-`[Huawei-aaa]?`
+[Huawei-aaa]?`
 
-`[Huawei-aaa]local-user admin password cipher 123456`
+[Huawei-aaa]local-user admin password cipher 123456`
 
-`[Huawei-aaa]local-user admin privilege level 3`
+[Huawei-aaa]local-user admin privilege level 3`
 
-`[Huawei-aaa]local-user admin service-type telnet`
+[Huawei-aaa]local-user admin service-type telnet`
 
-`[Huawei-aaa]local-user han password cipher 123456 privilege level 1 创建一个用户级别是1的用户`
+[Huawei-aaa]local-user han password cipher 123456 privilege level 1 创建一个用户级别是1的用户`
 </code></pre>
 <p>注意：配置完以后，必须保存，按q回退到<Huawei>用户视图，然后输入save保存</p>
 <h3 id="基础概念："><a href="#基础概念：" class="headerlink" title="基础概念："></a>基础概念：</h3><p>1.通用路由平台VRP（Versatile Routing Platform),VRP是华为公司具有完全自主知识产权的网络操作系统</p>
@@ -601,8 +601,7 @@ p攻击者伪造不同MAC地址的数据帧的。
 基于协议划分
 基于策略划分
 </code></pre>
-<h3 id="交换机端口的分类"><a href="#交换机端口的分类" class="headerlink" title="交换机端口的分类:"></a>交换机端口的分类:</h3><pre class=" language-plain"><code class="language-plain">Access（接入）端口Access端口用于连接计算机等终端设备，只能属于一个VLAN，也就是只能传输一个VLAN的数据。Trunk（干道）端口Trunk端口用于连接交换机等网络设备，它允许传输多个VLAN的数据。Hybrid（混合）端口Hybrid接口是华为系列交换机端口的默认工作模式，它能够接收和发送多个VLAN的数据帧，可以用于链接交换机之间的链路，也可以用于连接终端设备.vlan的添加:[Huawei]vlan 10[Huawei]vlan batch 20 30
-</code></pre>
+<h3 id="交换机端口的分类"><a href="#交换机端口的分类" class="headerlink" title="交换机端口的分类:"></a>交换机端口的分类:</h3><p>Access（接入）端口Access端口用于连接计算机等终端设备，只能属于一个VLAN，也就是只能传输一个VLAN的数据。Trunk（干道）端口Trunk端口用于连接交换机等网络设备，它允许传输多个VLAN的数据。Hybrid（混合）端口Hybrid接口是华为系列交换机端口的默认工作模式，它能够接收和发送多个VLAN的数据帧，可以用于链接交换机之间的链路，也可以用于连接终端设备.vlan的添加:[Huawei]vlan 10[Huawei]vlan batch 20 30</p>
 <h3 id="配置Access端口和Trunk端口"><a href="#配置Access端口和Trunk端口" class="headerlink" title="配置Access端口和Trunk端口:"></a>配置Access端口和Trunk端口:</h3><p>为修改交换机的Ethernet 0/0/1端口为access模式，并配置端口的PVID为VLAN10，同时修改交换机的Ethernet 0/0/2端口为trunk模式，配置允许VLAN10、VLAN20通过。</p>
 <pre class=" language-plain"><code class="language-plain">[Huawei]interface Ethernet 0/0/1[Huawei-Ethernet0/0/1]port link-type access[Huawei-Ethernet0/0/1]port default vlan 10[Huawei-Ethernet0/0/1]quit[Huawei]interface Ethernet 0/0/2[Huawei-Ethernet0/0/2]port link-type trunk[Huawei-Ethernet0/0/2]port trunk allow-pass vlan 10 20
 </code></pre>
@@ -612,15 +611,11 @@ p攻击者伪造不同MAC地址的数据帧的。
 <p>②确定根端口（Root port，RP），确定非根交换机与根交换机链接最优的端口。</p>
 <p>③确定指定端口（Designated Port，DP），确定每条链路与根桥连接最优的端口。</p>
 <p>④阻塞备用端口（Alternate Port，AP），形成一个无环网络。</p>
-<h3 id="①选举根桥："><a href="#①选举根桥：" class="headerlink" title="①选举根桥："></a>①选举根桥：</h3><pre class=" language-plain"><code class="language-plain">a)交换机S1、S2、S3都使用了默认的桥优先级32768；b)显然，S1的BID最小，所以最终S1将被选举为根桥。
-</code></pre>
+<h3 id="①选举根桥："><a href="#①选举根桥：" class="headerlink" title="①选举根桥："></a>①选举根桥：</h3><p>a)交换机S1、S2、S3都使用了默认的桥优先级32768；b)显然，S1的BID最小，所以最终S1将被选举为根桥。</p>
 <p><img src="https://i.loli.net/2021/05/21/IxHgJVtQeANzaZp.png" alt="image-20210521080510308"></p>
-<h3 id="②确定根端口："><a href="#②确定根端口：" class="headerlink" title="②确定根端口："></a>②确定根端口：</h3><pre class=" language-plain"><code class="language-plain">a)比较根路径开销，较小的为根端口；b)比较上行设备的BID，BID较小的端口为根端口；c)比较发送方端口ID，较小的端口为根端口。
-</code></pre>
-<h3 id="③确定指定端口："><a href="#③确定指定端口：" class="headerlink" title="③确定指定端口："></a>③确定指定端口：</h3><pre class=" language-plain"><code class="language-plain">指定端口也是通过比较RPC来确定的，RPC较小的端口将成为指定端口。如果RPC相同，则需要比较BID、PID等。
-</code></pre>
-<h3 id="④阻塞备用端口"><a href="#④阻塞备用端口" class="headerlink" title="④阻塞备用端口"></a>④阻塞备用端口</h3><pre class=" language-plain"><code class="language-plain">a)确定根端口和指定端口后，所有剩余端口称为备用端口。STP会对备用端口进行逻辑阻塞。b)备用端口被逻辑阻塞后，STP树的生成过程便告完成。
-</code></pre>
+<h3 id="②确定根端口："><a href="#②确定根端口：" class="headerlink" title="②确定根端口："></a>②确定根端口：</h3><p>a)比较根路径开销，较小的为根端口；b)比较上行设备的BID，BID较小的端口为根端口；c)比较发送方端口ID，较小的端口为根端口。</p>
+<h3 id="③确定指定端口："><a href="#③确定指定端口：" class="headerlink" title="③确定指定端口："></a>③确定指定端口：</h3><p>指定端口也是通过比较RPC来确定的，RPC较小的端口将成为指定端口。如果RPC相同，则需要比较BID、PID等。</p>
+<h3 id="④阻塞备用端口"><a href="#④阻塞备用端口" class="headerlink" title="④阻塞备用端口"></a>④阻塞备用端口</h3><p>a)确定根端口和指定端口后，所有剩余端口称为备用端口。STP会对备用端口进行逻辑阻塞。b)备用端口被逻辑阻塞后，STP树的生成过程便告完成。</p>
 <h3 id="配置交换机S1上生成树工作模式为STP："><a href="#配置交换机S1上生成树工作模式为STP：" class="headerlink" title="配置交换机S1上生成树工作模式为STP："></a>配置交换机S1上生成树工作模式为STP：</h3><pre class=" language-plain"><code class="language-plain"><Huawei>system-view[Huawei]sysname S1[S1]stp mode stp
 </code></pre>
 <h3 id="配置S1为根桥："><a href="#配置S1为根桥：" class="headerlink" title="配置S1为根桥："></a>配置S1为根桥：</h3><pre class=" language-plain"><code class="language-plain">[S1]stp root primary
@@ -725,11 +720,28 @@ Destination/Mask  Proto   Pre  Cost    Flags  NextHop    Interface
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2021/05/21/sql%E6%B3%A8%E5%85%A5%EF%BC%88%E9%80%9F%E6%9F%A5%E8%87%AA%E7%94%A8%EF%BC%89/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/e6d1615cb5395cf4ba096e6359e618c815c6184e.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/e6d1615cb5395cf4ba096e6359e618c815c6184e.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                网络配置与运维笔记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
-            <a href="/2018/12/20/%E6%AD%BB%E6%9D%A0%E5%AD%98%E5%9C%A8Dom%E5%9E%8Bxss%E6%BC%8F%E6%B4%9E%E7%9A%84%E7%89%87%E6%AE%B5js%E4%BB%A3%E7%A0%81/" rel="next">
+            <a href="/2020/05/31/%E6%AD%BB%E6%9D%A0%E5%AD%98%E5%9C%A8Dom%E5%9E%8Bxss%E6%BC%8F%E6%B4%9E%E7%9A%84%E7%89%87%E6%AE%B5js%E4%BB%A3%E7%A0%81/" rel="next">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h.jpg">
               </div>
