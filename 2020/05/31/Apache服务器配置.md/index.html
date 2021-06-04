@@ -581,8 +581,9 @@ Listen 8089   192.168.80.100
     Require all granted
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Directory</span><span class="token punctuation">></span></span>
 </code></pre>
-<p>（2）修改/etc/httpd/conf.d/vhost.conf文件。该文件的内容如下（原来内容清空）。<br>&lt;Virtualhost 192.168.8.100:8088&gt;</p>
-<pre class=" language-html"><code class="language-html">        DocumentRoot  /share/web/kidko 
+<p>（2）修改/etc/httpd/conf.d/vhost.conf文件。该文件的内容如下（原来内容清空）。</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Virtualhost</span> <span class="token attr-name"><span class="token namespace">192.168.8.100:</span>8088</span><span class="token punctuation">></span></span>
+         DocumentRoot  /share/web/kidko 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Virtualhost</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Virtualhost</span> <span class="token attr-name"><span class="token namespace">192.168.8.100:</span>8089</span><span class="token punctuation">></span></span>
         DocumentRoot   /share/web/organic  
