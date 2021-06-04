@@ -547,10 +547,10 @@ Require all granted
 <p>2.基于域名：要建立基于域名的虚拟主机，DNS服务器中应建立多个主机资源记录（<strong>也可在客户端的hosts文件中添加域名记录</strong>），使它们解析到同一个IP地址。例如：<br><a target="_blank" rel="noopener" href="http://www.kidko.com/">www.kidko.com</a>.               IN    A    192.168.8.100</p>
 <p><a target="_blank" rel="noopener" href="http://www.organic.com/">www.organic.com</a>.                IN    A    192.168.8.100</p>
 <p>（1）修改httpd.conf文件。添加目录权限内容如下。</p>
-<pre class=" language-plain"><code class="language-plain">    <Directory "/var/www">
-        AllowOverride None
-        Require all granted
-    </Directory>
+<pre class=" language-html"><code class="language-html">    &lt;Directory "/var/www">
+        AllowOverride None
+        Require all granted
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Directory</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>（2）修改httpd.conf文件。添加目录权限内容如下(之前以做过设置):</p>
 <pre class=" language-html"><code class="language-html">    &lt;Directory "/var/www">
