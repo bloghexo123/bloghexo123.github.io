@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">正则表达式 | 小破水站</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "小破站老梁";
+  mashiro_option.author_name = "老梁";
+  mashiro_option.site_url = "https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/bcaeef1ffbc2bed0120e9bad50e79a66.jpg";
+  mashiro_option.v_appId = "utbBncAytlRaYWwpoC2FVqjT-gzGzoHsz";
+  mashiro_option.v_appKey = "40fPh3p6TPvAdQtXSYHPQ8wX";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/1108435.jpg,https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/1108435.jpg,https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/1108435.jpg,https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/1108435.jpg,https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/1108435.jpg,https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/1108435.jpg,https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/1108435.jpg,https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/1108435.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/bcaeef1ffbc2bed0120e9bad50e79a66.jpg">
+          <img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0//img/bcaeef1ffbc2bed0120e9bad50e79a66.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>万物皆可对象</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0//img/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/my/m/music/playlist?id=824576875" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0//img/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="csdn">
+                    <img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0//img/csdn.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="http://weibo.com/mashirozx?is_all=1" target="_blank" class="social-github" title="bilibili">
+                    <img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0//img/bilibili.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0//img/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0//img/custom/wechat.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">小破站</span>
+            <span class="shironeko">老梁</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%B5%84%E6%BA%90/">
+                          <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                          资源
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          图集
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/wallhaven-v9ovol_1920x1080.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/wallhaven-v9ovol_1920x1080.png">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      正则表达式</h1>
+      <p class="entry-census">
+        <span>
+          <a href="laoliang.shop">
+            <img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/bcaeef1ffbc2bed0120e9bad50e79a66.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="laoliang.shop">老梁</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-5-31<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="03cef323d8eece34525c8ddbc141509180695b6de5afc37fbed15272fe84b8da">4630436162ade97ba2718b7d0c4b3b6393e46aed1c69f6ac78fc7c4c2e0b6813aefe2205478a2208d2a9f97ba1a83571de245a9f67a3c6cb3b781d2d3e2716f09529b402515da43394b9d8f8a36b38c328b5f3e1d690360a54bafec5044fa1000dc7c9f63b35c1913713bd45a9ec3d9e7fbd813e34e33d33a69fcedff9c69db7a16c9047d044c32d001e57bc508523dfd959c861a74fbfba75308335159ed3e000d0119d10bb44e8965c091bf68cd9df2954d1e1a9a92c4da10a7aef3947749ef1c0d5563e10981e10bcad62430c6d9a5ce28c1905dd91824d932768d01f23d957df28d7b86166619d3ea7ff2260fd53138e9ab72ef3a5e94b50bc630b5d9a208e9abf5fd620279dca6b5804b50ce694f66cde531441c35ad26e852b5b106b2032873bf9688845e83ec25f0de415a34d965eea4b111c34da2c7e92bb24f1ac7fbc2ce47854c3f9897defcab3f61b66aa6e9d86d2ed3ef1e07a425c294ff58e9ffce2755fbdfffed12404573f64a9ca3b0b492fc7bf2f39fcd0e8f9e97c264a6ed5ca2f67049344db833ec20dbb071a80a927f13f3b370f1c4b182aeefdf982230f4a55314ce0950684874f614b8580000116fdb5f1bbf9a9017c1f6dcf811b0d9dcb3352b57e0cea0f6f6aa2016b03edcfaa9ce5bd15a907b1ec57c4d7ec43aafd8df7876938ccd9c9bce238463cc65761693230e4e377c2a1784f18e4e79957a9493ce80ea1ffc7e137673529a3e395a887ebc42bef7d6fa36b376ce2f5dfd5be6f0b4afa8639933f1eea0b5d74f9632997c355c64ce7edcd068b902de6029f5d2b7ff7139b7a047992a4eced9391ae737dc61ce90e376236a6327d4558e77f0af6f254e561703a77340e83be67e73c0c71df68ba3cf30a50d7381c37a55ffbebb3b99937f036016628f9574f94117205c401b2b28d53cb73f19e6787c1fdf83904b32762b935f6d2f739be1f75a1cec9bb2be7df4823da0713ff87f7e134ea770fa0d2b2446c09cfa67ffc130632563e2e379a93678786605a57853dab16da2209a85bbcc2125e7763eb9158dad1fb8f261ded98703c788c40645845b3fd705da99b3f5058f4e91aa08465b4664a36c32efeb9d87a70ff6996e29b3fe8f41d265376dd6184d063c631e490f2387ff2974564c28446794726bf280e636f9bb492a47f3b28bfda085b30ae61e4bafd710304bfdbcbf7f607a63437e0f76445bd1db685e0f7bc52a947c3ed7b1389a7b22ff948c83b9f2df33dd5b9ead82e28bf3d0684a4ca2372496ecff14ce1ffcbf11fd724ca7f1f1437ce509d7edf72b59057b2c9c2fd549a355fe5165c07968fa328f4dbb3479f4d2ebb7e28899edf346b02c8544760db418cd26102610f33b8d19fed2dcdde3d6bb95304043bf79933346a1252772962e56003eab8ae6705622c6ce5ef7a5d36a4c323cb7a16a4448933f4e5886b60b2e21ce4cf8e8d84c821b9878c91939dbbffb7064bbc4f4fbe0c723cd68fda903ad7a753826e0aa281e4fe19a52ee576519b1ce218b6f652f7cbcc0c1a0753285faa0f03f51fb5d373eafe28f154f470d8f0ea70a7ea7198608af67ecda4de1cb35578b00ebc9d59df5819171cf6eb4318eeb7fa8ac5d1216c92184fb4b0e0fa16206df62a2181a9ba272326fe5f1c5f87959c72e4bf40aea0b1a225b442cc77605ba296657d4c928e134cfa3a5c5e36607e050422ce230130b6acdb483bdba316cfa13bb0332e6a688bb05f5bad4edc91e2948bad8e21ece81152603b35c61eaa1291321dd762838ffbc9afe9cde946f07d53833b260d082f1af34b74f6345cbf65388e058cc28b0568b3939b130f0860eaa98a8108caa6a17bc88de1d84d23590650976d81e7bdc053baa0846ab38a5809bd846c9ca3c716edbe19ae4f9315619703208510909685c272decbdb6f71af432b7c2a80af43354b472aa15d86de562fda26b525f4a852338954106f7a55ad8bc93fe65795020c3edf1d52fcbdd6dcb89fc46d1853d79023e26068bd0fed696bfca86eacf9bf9e57a825eba84d3b590524d7750b67a14ae79544da955577e8dea1028498a1d70b6d6c42c7493fc81e44e9ede874c4765de3b129d336f158f67c9ef45d72f21331d35dc721e17440d3f88d58474841929db2018331ce1c8161c5ca1a9f6df0bd25430ee793a35b0f272209acbff59f72c7f7a892a324c1b0f17d7663e8ffb6cbf274f06821ac2b7f4a74394b167e0e4d237caa2f917f0eaaf739b785ab0e1561e9a4f30890e17d0f4577f8eacd94ced7b20924b24c44a230ce77675ec4b30745fcb26428ad6989439e11cd0d85e5e75f56c8b88437ca21b9db49f4be030cebf35d58ffe4d24f27000aeab4406a20024a5efb327e4a592b0181eae6d3df801fbffe9831077af354f40eb2fec07758c3b8f1d859475a97902147a1ea633fc7e072039a11ac3b72378f25c48dc3a05ee5fcde5ca404fffe43c39752a5549d01b612dea3cc8751080cb3fe0331b03cb156e43d4eded526bab5364f1949844dd83bb38b0882a3cfa096633e1c5ade8d4bf19d103e6d81bc690fe00cc4175a7be0ced763abac92802015ca2bc6b8d01e6ee4eab39bac21608833b88ce0627f616526958582357da039078cb084ced881c78a2883adac38ff9595324c26e72a22370e9b7c8643c5f8bef8815ec1c6dad4c9a6de6b09172ef236b19bc75f0d6bd2ef75e60fd8a55d6b91ae4048d7bdba291c90db42d68550e35a8f1e6339e9867031c7e3bf0e71f8fe41e5e614d4cfefed4a744cc58d992745ee9fcfbfc0d98d2bc5114be18f280247d2eb5ca9cca25e1897dc6b92a1b20ce5aa820802caf4e0fc49775335f1af322ac353b3378769f9bf4be247c2feb15442dc1d95401b41acfffe8ac7a70d185acd9d0c01fcaeca607c5b736fdbdf8197d4b2a56ad49139f16e2ead18f58d693126864905d4d6e6a7c9df0245d807dc73882872ba85f48be84842a586602633dca8cb8712e9ba48c87ed8424d4642e6690973c25c1cb63a020e956b105055a0f5cb678e7e9a47502166a9d01eb0a0b29e74f68e4f5c9b68978745b3bc876a101cf77beb9a3e68042eed0a08eb8912c1e849bbcee55f7086bdcf6da27510f64bc69c2727b39349014c99bce37c4a5c6d862d4527d06207565f20255ae6c839535b5706d045b34b8b62fe2468fb6eb05d26fe0ef8eae772ce4fe97d238e0e21d5029687539402045236aaa3a8f914bda112762086bda53715e7ab9a52c8f830e6933223d5f192f3d8a4d6370057c157694a6bb94c8c27b9a8f35d5adfc064685513d06151a469126097a561b8e01c2737f77335d043452a195739c6598074777ab4bf1dd90435d9a78f2f20b4bcc5f4a11cd3610e4983e93ef24b634ee4d2d936bfdf52b58e1a9db031edd2cd47552128528f137f0aae23027a7797f5ad22c6019247606103a867c0267102872a244a96c0745489b02f5d59a7dc9502e9eca872b5294f78af1d0e26da017c6fc7cdfd4e6f59351cb9d34faf8800ef07ad2acc98ec2777483429b7c934e271411d26ef751c3e7a86aa7cf01c0de2b63aded58fc388a690c0cb2dbab134c1d36ddddf13fbac93a925effe4a1325a1214227faa94301e300355c0a3b6f16ae5e1e9f2ea01b2e18a7bcacbe39bac8c56c5ab966588a9e6c9d2e49478872697aa7b4a18589e2a9208bb5c8d3f84f323eaf92ad897afa632beb06fe589b6aaf60826d42a8e0b0e7661a82ead66e42c70c63861ade976291be15f52bdd118ea6206726d5d5bc16a8b46fb87d8998661c5f66344db6414a59421925a19fd7759f4519397a5d110a46b0b45d31dabc2fb4f719ec4a5928ebb3fde33f65702026dbadecb74c26d9cf94ed170d1753ebb9525ccc1e6f058b4e277d78773c0457dc9d03fff784df46faac16dc8fa0c0b7075f0517d91c44d05c455d1e2c2c7a14afd32ead7de6116e3e0851b57503f721f370f7b029cd6f05c1b68a2daafcffd09985d065dd36385f434e903e968eb84a3cc028e51c11db5a23bd664891e88ca3360904463e90df7e4c2e0b30e1aa682229a46dc2576bcec407410a296de31f5f52389afb6f097a5323ddf30410067d795e17ec5869ee57438903874860df0eb80d0f0e7396f5bb08ef60d09927fe2f4736cfab76a4127a468d0ec25436c321bb17d197f7dc83e48272feaafb06498f9c2d182afac8066e0e9ef554b12917180667ac1f8be3ee646169db1ebed2bd5740678a54fcdff2f3399a7f9d9f719ddbdb24db361da23f0d409b84c2857747c5300a08fe6f74d0f776cba5db8dd1fda7c7c8ff51fc0dbc8285d8a03e97fa34056e75bc0fabff3937c30a967fc0fdc39e3b325be5dc462d52826f097b39d217e4537ae0f0869505b8bb0668240f6fd1b908c72cf8dde8cf5d6a2b16e09c2dc25db97aa0f3f344f7734adae4ba09de1943b6ca99a8664141503df05b441009433111cad38c7e2d680656446b0c1f52f956340447a3fd3ef7ea2a8fd96ade7fc7bddf582fa51e2bd17c0d46462c63d12ac38d90e8412f4a64d24184149d077f17f26f7cc8ce729e4d3b2a32639ea2ed1c84bf0deea17aab9b09654490b9e418cea011ef908f672b72998d7aeceb95bc971679bf0cb9d1b17ce66d0be90181d2da73040905aa3544984be909d25bd6a0dffbb633edf0141cc4e42d3a928a1f4621d81bdc2580708cd558763f9388b0d4aef37c8b768159b6a99dad1d8d50d3c0388b3c33fadf32dfb217d7bd288a203faad459c4811d2ca0321c5fbc478a3aa989af1a9857419e2849e4c19a294f8e020ce5148810f30503505c1b99123963deb1853948c86139a4afb3b6a3adf1a4613160b4ec0b084a4907f486afe132fe85a501635854fa6f2694c71c1c5a5f94ee1015105ff94293203bd27f48e4d998d298bf0c9f79d998e25be292ea9f4547cd227d518e45b5f7231854f68f732d4d6f079c4d5319bf1046d1cc3bea97dc88e5eb774b284f1b23ac5adf0b48</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0//img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0//img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/05/31/%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/pastel_anime-wallpaper-1920x1080.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0/img/pastel_anime-wallpaper-1920x1080.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                代码执行漏洞（自查自用）</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/05/31/%E6%AD%BB%E6%9D%A0%E5%AD%98%E5%9C%A8Dom%E5%9E%8Bxss%E6%BC%8F%E6%B4%9E%E7%9A%84%E7%89%87%E6%AE%B5js%E4%BB%A3%E7%A0%81/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://blog-1305208649.cos.ap-beijing.myqcloud.com/d940a02861b90cf85a32800d32d77dca8b02e074.jpg@1320w_926h.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                死杠存在Dom型xss漏洞的片段js代码</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "utbBncAytlRaYWwpoC2FVqjT-gzGzoHsz",
+        appKey: "40fPh3p6TPvAdQtXSYHPQ8wX",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="laoliang.shop" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDNNAME/img/bcaeef1ffbc2bed0120e9bad50e79a66.jpg" itemprop="image" alt="老梁" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="laoliang.shop" itemprop="url" rel="author">老梁</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一介菜狗</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 老梁<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/bloghexo123/CDN@1.0//img/bcaeef1ffbc2bed0120e9bad50e79a66.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">小破站老梁</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/honjun" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=2953902610&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%B5%84%E6%BA%90/">
+                  <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                  资源
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags/%E5%9B%BE%E9%9B%86/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  图集
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="6783249191"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="true"
+
+    loop="all"
+
+    order="random"
+
+    preload="none"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
